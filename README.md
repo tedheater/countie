@@ -83,34 +83,10 @@ County/
 └── Archive.zip         # Archived files
 ```
 
----
-
-## Installation
-
-### Option 1: Open Directly (Quick Start)
-Since this is a static web app with no build step, you can open it directly:
-
-```bash
-open "/Users/mbpm4/Desktop/GPT Proj/County/index.html"
-```
-
-### Option 2: Local Server (Recommended for PWA features)
-For full PWA functionality including offline support and installation:
-
-```bash
-cd "/Users/mbpm4/Desktop/GPT Proj/County"
-python3 -m http.server 8080
-```
-Then visit `http://localhost:8080` in your browser.
-
-### Option 3: Deploy to Web Server
-Upload all files to any static web hosting service (Netlify, Vercel, GitHub Pages, etc.).
-
----
 
 ## Getting Started
 
-1. **Open the app** using one of the installation methods above
+1. **Open the app** 
 2. **Default counter** - The app starts with one default counter named "Counter"
 3. **Start counting** - Tap the counter to increment
 4. **Access settings** - Click the gear icon (⚙) in the bottom bar to manage categories and data
