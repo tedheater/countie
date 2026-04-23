@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#0a0a0f" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Tap Counter" />
+    <title>Tap Counter</title>
+    <link rel="manifest" href="manifest.json" />
+    <link rel="apple-touch-icon" sizes="180x180" href="icons/icon-180.png" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section id="counter-grid" class="counter-grid" aria-label="Counter buttons"></section>
+
+      <footer class="bottom-bar">
+        <div class="session-total">
+          <span class="muted">Total</span>
+          <strong id="total-count">0</strong>
+        </div>
+        <button id="open-settings" class="settings-trigger" type="button" aria-label="Open settings">
+          Settings
+        </button>
+      </footer>
+    </main>
+
+    <dialog id="settings-dialog" class="settings-dialog">
+      <form class="settings-sheet" id="settings-form">
+        <header class="sheet-header">
+          <h1>Track Setup</h1>
+          <button id="close-settings" type="button" class="close-btn" aria-label="Close settings">
+            Done
+          </button>
+        </header>
+
+        <p class="sheet-subhead">Customize what you want to count.</p>
+
+        <ul id="category-list" class="category-list"></ul>
+
+        <div class="controls-row">
+          <button id="add-category" class="ghost-btn" type="button">+ Add Category</button>
+          <button id="reset-counts" class="warn-btn" type="button">Reset Counts</button>
+        </div>
+
+        <div class="controls-row controls-row-secondary">
+          <button id="export-csv" class="ghost-btn" type="button">Export CSV</button>
+          <button id="install-app" class="ghost-btn" type="button" hidden>Install App</button>
+        </div>
+        <p id="install-hint" class="install-hint">iPhone: Share menu -> Add to Home Screen</p>
+      </form>
+    </dialog>
+
+    <template id="category-item-template">
+      <li class="category-item">
+        <div class="category-main">
+          <input class="category-input" maxlength="24" aria-label="Category name" />
+          <div class="category-meta">
+            <label class="mini-field">
+              <span>Icon</span>
+              <input class="icon-input" maxlength="4" aria-label="Category icon" placeholder="👖" />
+            </label>
+            <label class="mini-field">
+              <span>Color</span>
+              <input class="color-input" type="color" aria-label="Category color" />
+            </label>
+          </div>
+        </div>
+        <button class="icon-btn remove-btn" type="button" aria-label="Remove category">Remove</button>
+      </li>
+    </template>
+
+    <script src="app.js"></script>
+  </body>
+</html>

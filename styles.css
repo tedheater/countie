@@ -1,0 +1,333 @@
+:root {
+  --bg-0: #06070b;
+  --bg-1: #11131a;
+  --bg-2: #1a1d26;
+  --stroke: rgba(255, 255, 255, 0.08);
+  --text: #f6f7fb;
+  --text-soft: rgba(246, 247, 251, 0.62);
+  --blue: #0a84ff;
+  --green: #30d158;
+  --amber: #ff9f0a;
+  --pink: #ff375f;
+  --shadow: 0 14px 36px rgba(0, 0, 0, 0.46);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+}
+
+body {
+  background:
+    radial-gradient(140% 100% at 90% -30%, rgba(56, 44, 126, 0.24), transparent 55%),
+    radial-gradient(130% 120% at -20% -20%, rgba(10, 132, 255, 0.18), transparent 50%),
+    linear-gradient(180deg, #090a10 0%, #05060a 100%);
+  color: var(--text);
+  font-family:
+    "SF Pro Display",
+    "SF Pro Text",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+.app-shell {
+  min-height: 100dvh;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  padding: max(10px, env(safe-area-inset-top)) 10px max(8px, env(safe-area-inset-bottom)) 10px;
+  gap: 10px;
+}
+
+.counter-grid {
+  display: grid;
+  gap: 10px;
+  min-height: 0;
+}
+
+.count-btn {
+  width: 100%;
+  border: 1px solid var(--stroke);
+  border-radius: 26px;
+  padding: 14px 16px;
+  background:
+    linear-gradient(160deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.02)),
+    rgba(255, 255, 255, 0.03);
+  color: var(--text);
+  box-shadow: var(--shadow);
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  gap: 6px;
+  text-align: center;
+  min-height: 72px;
+  transition: transform 120ms ease, filter 140ms ease, background-color 120ms ease;
+  touch-action: manipulation;
+  user-select: none;
+}
+
+.count-btn:active,
+.count-btn.is-pressed {
+  transform: scale(0.985);
+  filter: brightness(1.15);
+}
+
+.count-btn:focus-visible {
+  outline: 2px solid rgba(10, 132, 255, 0.9);
+  outline-offset: 3px;
+}
+
+.count-label {
+  font-size: clamp(1.02rem, 2.2vw + 0.6rem, 1.9rem);
+  font-weight: 460;
+  letter-spacing: 0.01em;
+}
+
+.count-icon {
+  font-size: clamp(1.2rem, 2.6vw + 0.7rem, 2rem);
+  line-height: 1;
+}
+
+.count-value {
+  font-size: clamp(2rem, 7vw, 4.8rem);
+  line-height: 0.92;
+  font-weight: 320;
+}
+
+.bottom-bar {
+  border: 1px solid var(--stroke);
+  border-radius: 20px;
+  background: rgba(17, 19, 27, 0.82);
+  backdrop-filter: blur(16px) saturate(120%);
+  -webkit-backdrop-filter: blur(16px) saturate(120%);
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 62px;
+}
+
+.session-total {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.session-total strong {
+  font-size: 1.35rem;
+  font-weight: 420;
+}
+
+.muted {
+  color: var(--text-soft);
+  font-size: 0.88rem;
+  letter-spacing: 0.02em;
+}
+
+.settings-trigger,
+.ghost-btn,
+.warn-btn,
+.close-btn,
+.icon-btn {
+  border: 1px solid var(--stroke);
+  border-radius: 14px;
+  padding: 10px 14px;
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text);
+  font-size: 0.98rem;
+  font-weight: 430;
+}
+
+.settings-trigger:active,
+.ghost-btn:active,
+.warn-btn:active,
+.close-btn:active,
+.icon-btn:active {
+  transform: scale(0.98);
+}
+
+.settings-dialog {
+  width: min(700px, calc(100vw - 20px));
+  border: none;
+  border-radius: 24px;
+  padding: 0;
+  background: transparent;
+  color: var(--text);
+}
+
+.settings-dialog::backdrop {
+  background: rgba(0, 0, 0, 0.62);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+.settings-sheet {
+  background: linear-gradient(180deg, var(--bg-2), var(--bg-1));
+  border: 1px solid var(--stroke);
+  border-radius: 24px;
+  padding: 14px;
+  display: grid;
+  gap: 12px;
+}
+
+.sheet-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.sheet-header h1 {
+  margin: 0;
+  font-size: 1.22rem;
+  font-weight: 500;
+}
+
+.sheet-subhead {
+  margin: 0;
+  color: var(--text-soft);
+  font-size: 0.95rem;
+}
+
+.category-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 8px;
+}
+
+.category-item {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 8px;
+  align-items: start;
+}
+
+.category-main {
+  display: grid;
+  gap: 8px;
+}
+
+.category-meta {
+  display: flex;
+  gap: 8px;
+  align-items: end;
+}
+
+.mini-field {
+  display: grid;
+  gap: 4px;
+  font-size: 0.74rem;
+  color: var(--text-soft);
+  letter-spacing: 0.02em;
+}
+
+.category-input {
+  width: 100%;
+  border: 1px solid var(--stroke);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text);
+  padding: 11px 12px;
+  font-size: 1rem;
+}
+
+.category-input:focus-visible {
+  outline: 2px solid rgba(10, 132, 255, 0.9);
+  outline-offset: 1px;
+}
+
+.icon-input {
+  width: 80px;
+  border: 1px solid var(--stroke);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text);
+  padding: 10px 8px;
+  font-size: 1.05rem;
+  text-align: center;
+}
+
+.icon-input:focus-visible {
+  outline: 2px solid rgba(10, 132, 255, 0.9);
+  outline-offset: 1px;
+}
+
+.color-input {
+  width: 52px;
+  height: 42px;
+  border: 1px solid var(--stroke);
+  border-radius: 12px;
+  padding: 0;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.color-input::-webkit-color-swatch-wrapper {
+  padding: 4px;
+}
+
+.color-input::-webkit-color-swatch {
+  border: none;
+  border-radius: 9px;
+}
+
+.remove-btn {
+  font-size: 0.84rem;
+  padding: 9px 10px;
+  color: rgba(255, 255, 255, 0.84);
+}
+
+.remove-btn:disabled {
+  opacity: 0.35;
+}
+
+.controls-row {
+  display: flex;
+  gap: 8px;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.controls-row > button {
+  flex: 1;
+  min-width: 130px;
+}
+
+.install-hint {
+  margin: 0;
+  color: var(--text-soft);
+  text-align: center;
+  font-size: 0.83rem;
+}
+
+.ghost-btn {
+  color: #b2dbff;
+}
+
+.warn-btn {
+  color: #ffd3dc;
+}
+
+@media (max-width: 430px) {
+  .count-btn {
+    border-radius: 20px;
+  }
+
+  .count-value {
+    font-size: clamp(2rem, 11vw, 4.8rem);
+  }
+}
